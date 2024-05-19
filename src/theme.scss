@@ -1,0 +1,88 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$my-orange-palette: (
+  50: #fff3e0,
+  100: #ffe0b2,
+  200: #ffcc80,
+  300: #ffb74d,
+  400: #ffa726,
+  500: #ff9800,
+  600: #fb8c00,
+  700: #f57c00,
+  800: #ef6c00,
+  900: #e65100,
+  A100: #ffd180,
+  A200: #ffab40,
+  A400: #ff9100,
+  A700: #ff6d00,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$AlphaOmega-primary: mat.define-palette($my-orange-palette);
+$AlphaOmega-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$AlphaOmega-warn: mat.define-palette(mat.$red-palette);
+
+// Define los colores de texto personalizados
+$custom-foreground: (
+  base: #ffffff,
+  divider: #bdbdbd,
+  dividers: #bdbdbd,
+  disabled: rgba(255, 255, 255, 0.3),
+  disabled-button: rgba(255, 255, 255, 0.3),
+  disabled-text: rgba(255, 255, 255, 0.3),
+  elevation: #ffffff,
+  hint-text: rgba(255, 255, 255, 0.3),
+  secondary-text: rgba(255, 255, 255, 0.7),
+  icon: rgba(255, 255, 255, 0.7),
+  icons: rgba(255, 255, 255, 0.7),
+  text: #ffffff
+);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$AlphaOmega-theme: mat.define-dark-theme((
+  color: (
+    primary: $AlphaOmega-primary,
+    accent: $AlphaOmega-accent,
+    warn: $AlphaOmega-warn,
+    foreground: $custom-foreground,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($AlphaOmega-theme);
+
