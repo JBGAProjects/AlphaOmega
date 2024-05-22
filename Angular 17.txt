@@ -1,0 +1,63 @@
+Angular 17
+
+
+Si queremos usar providers se tienen que importar en app.config.ts
+ejemplo: 
+	
+	export const appConfig: ApplicationConfig = {
+ 		 providers: [
+    			provideRouter(routes),
+    			provideAnimationsAsync(),
+    			provideHttpClient(withFetch()),
+    			{
+    	  		provide: JWT_OPTIONS,
+      			useValue: {
+        			tokenGetter: tokenGetter,
+        			allowedDomains: ["dummyjson.com"],
+        			disallowedRoutes: ["/api/auth"],
+      				},
+    			},
+   			 JwtHelperService,
+ 		   ],
+
+Si queremos hacer que se hagan importaciones con un @"proyectoName"/"carpeta"  desde un index.ts
+debemos indicarlo desde desde el tsConfig.json de esta forma 
+	"baseUrl": "./src/",
+    		"paths": {
+      			"@alphaOmega/core": ["core"],
+      			"@alphaOmega/domain": ["libs/domain"]
+    			},
+	 *****baseUrl indica la raiz y el resto las carpetas de donde cogera esa importación
+
+
+Para crear un guard en angular 17 es de una forma distinta, si queremos usar algún dato que antes se importaba en un constructor ahora se injecta dentro del método exportable 
+
+	Ejemplo: 
+	export const authGuard: CanActivateFn = (route, state) => {
+  		const authService = inject(DataAccessUsuarioService);
+  		const router = inject(Router);
+
+ 		 if (authService.isAuthenticated()) {
+    			return true;
+  		} else {
+    			return router.parseUrl("/login");
+  		}
+	};
+
+Para usar interceptors: 
+	se hace de esta forma en angular 17
+	export const authInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
+  		const token = localStorage.getItem("token");
+
+  		if (token) {
+    		// Clona la solicitud y agrega el token de autorización
+   			 const modifiedReq = req.clone({
+      		headers: req.headers.set("Authorization", `Bearer ${token}`),
+    	});
+		//Pasa la solicitud modificada al siguiente consulta http
+    	return next(modifiedReq);
+  		}
+
+  		// Si no hay token, pasa la solicitud sin modificar
+  		return next(req);
+	};

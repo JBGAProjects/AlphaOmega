@@ -5,7 +5,8 @@
     "outDir": "./dist/out-tsc",
     "baseUrl": "./src/",
     "paths": {
-      "@alphaOmega/core": ["core"]
+      "@alphaOmega/core": ["core"],
+      "@alphaOmega/domain": ["libs/domain"]
     },
     "strict": true,
     "noImplicitOverride": true,

@@ -1,4 +1,5 @@
 import { AngularMaterialModule } from "@alphaOmega/core";
+import { DataAccessUsuarioService } from "@alphaOmega/domain";
 import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
@@ -15,20 +16,24 @@ import {
   styleUrl: "./login.component.scss",
 })
 export class LoginComponent implements OnInit {
-  //https://www.openproject.org/docs/api/example/
+  //username: 'kminchelle',
+  //password: '0lelplR',
 
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private readonly usuarioService: DataAccessUsuarioService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      userName: [""],
-      passWord: [""],
+      username: [""],
+      password: [""],
     });
   }
 
   login(formulario: FormGroup) {
-    console.log(formulario.value);
+    this.usuarioService.login(formulario.value);
   }
 }
