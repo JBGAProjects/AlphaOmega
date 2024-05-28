@@ -20,7 +20,7 @@ export class DataAccessUsuarioService {
     return this.http.post(`${this.apiUrl}/login`, credentials).subscribe({
       next: (response: any) => {
         sessionStorage.setItem("token", response.token);
-        this.router.navigate(["/dashboard"]);
+        this.router.navigate(["home"]);
       },
       error: (error) => {
         console.error("Login failed", error);

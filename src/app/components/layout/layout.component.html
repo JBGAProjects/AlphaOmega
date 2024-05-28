@@ -1,1 +1,9 @@
-<button (click)="logout()">LogOut</button>
+<button (click)="logout()">LogOut</button> <app-dashboard></app-dashboard>
+<button
+  [routerLink]="['user-management']"
+  routerLinkActive="router-link-active"
+>
+  Navegar a administración de usuarios
+</button>
+
+<router-outlet></router-outlet>

@@ -1,7 +1,6 @@
 import { Routes } from "@angular/router";
 import { LoginComponent } from "./components/login/login.component";
 import { LayoutComponent } from "./components/layout/layout.component";
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { authGuard } from "@alphaOmega/core";
 
 export const routes: Routes = [
@@ -12,13 +11,16 @@ export const routes: Routes = [
   },
   { path: "login", component: LoginComponent },
   {
-    path: "",
+    path: "home",
     component: LayoutComponent,
     canActivate: [authGuard],
     children: [
       {
-        path: "dashboard",
-        component: DashboardComponent,
+        path: "user-management",
+        loadChildren: () =>
+          import("app/user-management/src/app/app.routes").then(
+            (m) => m.routes
+          ),
       },
     ],
   },
