@@ -1,0 +1,26 @@
+<mat-toolbar class="container-toolbar">
+  <span>AlphaOmega</span>
+  <div class="container-buttons">
+    <button
+      mat-button
+      [routerLink]="['user-management']"
+      routerLinkActive="router-link-active"
+    >
+      User management
+    </button>
+  </div>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    aria-label="menu usuario botón"
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon>face</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Cerrar sesión
+    </button>
+  </mat-menu>
+</mat-toolbar>

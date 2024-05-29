@@ -1,0 +1,15 @@
+@import '../../../assets/styles/core-colors.scss';
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.container-toolbar{
+    background-color: $primary-color;
+    position: fixed;
+    z-index: 1000;
+    .container-buttons{
+      margin:  10px;
+      padding-top: 3px;
+    }
+}

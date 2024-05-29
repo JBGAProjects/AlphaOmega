@@ -23,7 +23,7 @@ $my-orange-palette: (
   A100: #ffd180,
   A200: #ffab40,
   A400: #ff9100,
-  A700: #ff6d00,
+  A700: #2d388f,
   contrast: (
     50: white,
     100: white,
@@ -47,6 +47,7 @@ $my-orange-palette: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $AlphaOmega-primary: mat.define-palette($my-orange-palette);
+$AlphaOmega-secondary: mat.define-palette($my-orange-palette, A700);
 $AlphaOmega-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -73,6 +74,7 @@ $custom-foreground: (
 $AlphaOmega-theme: mat.define-dark-theme((
   color: (
     primary: $AlphaOmega-primary,
+    secondary: $AlphaOmega-secondary,
     accent: $AlphaOmega-accent,
     warn: $AlphaOmega-warn,
     foreground: $custom-foreground,
