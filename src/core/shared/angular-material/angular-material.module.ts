@@ -10,6 +10,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 const moduleAngular = [
   MatFormFieldModule,
@@ -19,6 +21,8 @@ const moduleAngular = [
   MatToolbarModule,
   MatIconModule,
   MatMenuModule,
+  MatTableModule,
+  MatPaginatorModule,
 ];
 
 @NgModule({

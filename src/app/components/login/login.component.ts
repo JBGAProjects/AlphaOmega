@@ -16,9 +16,6 @@ import {
   styleUrl: "./login.component.scss",
 })
 export class LoginComponent implements OnInit {
-  //username: 'kminchelle',
-  //password: '0lelplR',
-
   loginForm!: FormGroup;
 
   constructor(
